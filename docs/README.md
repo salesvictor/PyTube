@@ -10,8 +10,11 @@ PyTube
 |   +-- README.md
 |   +-- LICENSE.md
 +-- img
-|   +-- (site images)
+|   +-- (all images)
 +-- js
-|   +-- (scripts)
+|   +-- (js scripts)
++-- src
+|   +-- (other html files)
++-- .gitignore
 +-- index.html
 ```

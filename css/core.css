@@ -1,1 +1,4 @@
 /* Core css styling and changes to bootstrap classes */
+#user {
+  font-size: 1.8rem;
+}
