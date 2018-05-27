@@ -9,3 +9,7 @@ def index():
 @app.route('/404')
 def error404():
   return render_template('404.html')
+
+@app.route('/auth')
+def auth():
+  return render_template('auth.html')
