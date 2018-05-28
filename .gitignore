@@ -1,5 +1,1 @@
-Pipfile
-Pipfile.lock
-venv/*
-app/__pycache__/*
-__pycache__/*
+.__init__.py.swp
