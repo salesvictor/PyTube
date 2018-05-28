@@ -9,3 +9,7 @@ def index():
 @app.route('/user_profile')
 def user_profile():
   return render_template('user_profile.html')
+
+@app.route('/auth')
+def auth():
+  return render_template('auth.html')

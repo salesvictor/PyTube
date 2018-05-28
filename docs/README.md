@@ -1,20 +1,19 @@
 # PyTube
-![PyTube Logo](/img/logo.png)
+![PyTube Logo](../app/static/logo.png)
 
 ### File Structure
 ```
 PyTube
-+-- css
-|   +-- (css styling files)
++-- app
+|   +-- static
+|   |   (static files such as css, js scripts and images)
+|   +-- templates
+|   |   (pages to be rendered as html)
+|   __init__.py (initializes flask)
+|   routes.py (specifies routes to flask)
 +-- docs
 |   +-- README.md
 |   +-- LICENSE.md
-+-- img
-|   +-- (all images)
-+-- js
-|   +-- (js scripts)
-+-- src
-|   +-- (other html files)
 +-- .gitignore
-+-- index.html
++-- pytube.html
 ```
