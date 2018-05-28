@@ -1,0 +1,109 @@
+2018-05-28 09:18:57,442 INFO: PyTube Startup [in /home/salesvictor/PyTube/app/__init__.py:33]
+2018-05-28 09:22:11,265 INFO: PyTube Startup [in /home/salesvictor/PyTube/app/__init__.py:33]
+2018-05-28 09:27:44,713 INFO: PyTube Startup [in /home/salesvictor/PyTube/app/__init__.py:33]
+2018-05-28 09:27:47,296 ERROR: Exception on / [GET] [in /home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/salesvictor/PyTube/app/routes.py", line 7, in index
+    return render_template('index.html', videos=range(13))
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/salesvictor/PyTube/app/templates/index.html", line 39, in top-level template code
+    <a href="{{ url_for('user_profile') }}">
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'user_profile'. Did you mean 'error404' instead?
+2018-05-28 09:28:52,133 INFO: PyTube Startup [in /home/salesvictor/PyTube/app/__init__.py:33]
+2018-05-28 09:29:00,221 ERROR: Exception on /user_profile [GET] [in /home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/salesvictor/PyTube/app/routes.py", line 11, in user_profile
+    return render_template('user_profile.html')
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/jinja2/loaders.py", line 113, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/templating.py", line 58, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/templating.py", line 86, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: user_profile.html
+2018-05-28 09:29:51,673 INFO: PyTube Startup [in /home/salesvictor/PyTube/app/__init__.py:33]
+2018-05-28 09:29:55,338 ERROR: Exception on /user_profile [GET] [in /home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/salesvictor/PyTube/app/routes.py", line 11, in user_profile
+    return render_template('user_profile.html')
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/jinja2/loaders.py", line 113, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/templating.py", line 58, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/salesvictor/.local/share/virtualenvs/PyTube-ZcennWwD/lib/python3.6/site-packages/flask/templating.py", line 86, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: user_profile.html
+2018-05-28 09:30:22,428 INFO: PyTube Startup [in /home/salesvictor/PyTube/app/__init__.py:33]

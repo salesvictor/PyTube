@@ -10,11 +10,13 @@
 
   <body style="background-color: #e8e8e8">
     <div class="text-center" style="margin-top: 40px">
-      <img src="{{ url_for('static', filename='404.png') }}" height="350px" alt="page not found">
+      <img src="{{ url_for('static', filename='error.png') }}" height="350px" alt="page not found">
       <div class="card text-danger border-danger mb-3" style="margin: 40px auto; max-width: 18rem">
         <div class="card-header"><h3>DOH!</h3></div>
         <div class="card-body">
-          <h6 class="card-title">Some incompetent developer hasn't coded this yet...</h6>
+          <h6 class="card-text">Some incompetent developer hasn't coded this yet...</h6>
+          <h4 class="card-title">Error {{ error }}:</h4>
+          <h5 class="card-text">{{ desc }}</h5>
         </div>
       </div>
     </div>

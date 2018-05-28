@@ -6,6 +6,6 @@ from app import app
 def index():
   return render_template('index.html', videos=range(13))
 
-@app.route('/404')
-def error404():
-  return render_template('404.html')
+@app.route('/user_profile')
+def user_profile():
+  return render_template('user_profile.html')
