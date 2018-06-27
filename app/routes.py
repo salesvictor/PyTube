@@ -13,3 +13,7 @@ def index():
 def login():
   form = LoginForm()
   return render_template('login.html', form=form)
+
+@app.route('/user_profile')
+def user_profile():
+  return render_template('user_profile.html', user=user)
