@@ -171,3 +171,6 @@ werkzeug.routing.BuildError: Could not build url for endpoint 'static/css' with 
 2018-06-26 21:28:55,892 INFO: PyTube Startup [in /home/salesvictor/PyTube/app/__init__.py:33]
 2018-06-26 21:29:42,445 INFO: PyTube Startup [in /home/salesvictor/PyTube/app/__init__.py:33]
 2018-06-26 22:10:44,500 INFO: PyTube Startup [in /home/salesvictor/PyTube/app/__init__.py:33]
+2018-06-26 22:28:20,406 INFO: PyTube Startup [in /home/salesvictor/PyTube/app/__init__.py:33]
+2018-06-26 22:29:15,234 INFO: PyTube Startup [in /home/salesvictor/PyTube/app/__init__.py:33]
+2018-06-26 22:31:26,205 INFO: PyTube Startup [in /home/salesvictor/PyTube/app/__init__.py:33]
