@@ -2,7 +2,6 @@ import os
 import logging
 from flask import Flask
 from config import Config
-from pathlib import Path
 from logging.handlers import SMTPHandler, RotatingFileHandler
 
 app = Flask(__name__)
@@ -24,7 +23,7 @@ if not app.debug:
     app.logger.addHandler(mail_handler)
 
   os.makedirs('logs', exist_ok=True)
-  file_handler = RotatingFileHandler(Path('logs/pytube.log'), maxBytes=10485760, backupCount=10)
+  file_handler = RotatingFileHandler('logs/pytube.log', maxBytes=10485760, backupCount=10)
   file_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
   file_handler.setLevel(logging.INFO)
   app.logger.addHandler(file_handler)
