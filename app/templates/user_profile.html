@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Profile</title>
-  </head>
-  <body>
-    <p>Hello, </p>
-  </body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+  {% if user == None %}
+    <h3>You shouldn't be here. You're not logged in. Please
+      <a href="{{ url_for('login') }}">
+        log in.
+      </a>
+    </h3>
+  {% else %}
+    Hello, {{ user }}
+  {% endif %}
+{% endblock %}

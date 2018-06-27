@@ -24,3 +24,7 @@ def upload():
     return redirect(url_for('index'))
 
   return render_template('upload.html')
+
+@app.route('/user_profile')
+def user_profile():
+  return render_template('user_profile.html', user=user)
