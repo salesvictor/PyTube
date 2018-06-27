@@ -1,5 +1,5 @@
 from flask import render_template, request
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 from werkzeug.urls import url_parse
 from app import app
 from app.models import User
@@ -66,4 +66,4 @@ def register():
     flash('Welcome to PyTube :)')
     return redirect(url_for('index'))
  
- return render_template('register.html')
+  return render_template('register.html')
