@@ -24,14 +24,13 @@
     <br>
     <br>
     <div class="container">
-      <div class="panel-group">
-        {% for post in posts %}
-        <div class="panel panel-primary">
-          <div class="panel-heading"><p>{{ post.author.username }}</p></div>
-          <div class="panel-body"><p>{{ post.body }}</p></div>
-        </div>
-        {% endfor %}
+      {% for post in posts %}
+      <div style="border-style: solid; border-width: 2px; border-color: black; text-align: center; margin: 10px auto; width: 450px; border-radius: 10px; padding-top: 10px;">
+        <div class="panel-heading" style="vertical-align: middle;"><p>{{ post.author.username }}</p></div>
+        <hr>
+        <div class="panel-body" style="vertical-align: middle; padding: 5px 10px;"><p>{{ post.body }}</p></div>
       </div>
+      {% endfor %}
     </div>
   </div>
 </section>
