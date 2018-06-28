@@ -7,16 +7,26 @@
     <video width="640px" height="360px" controls>
       <source src="{{ video_file }}" type="video/webm">
     </video>
+    <br>
     <h2>{{ video.title }}</h2>
     <p>Views: {{ video.views }}</p>
     <p>{{ video.description }}</p>
+    <br>
+
     <form action="{{ url_for('watch', v=video.watch_id) }}" method="post">
-      <input type="text" value="Post a comment here!" name="body">
-      <button type="submit">POST!!</button>
+      <div class="input-group" style="margin-bottom: 20px;">
+        <textarea placeholder="Post a comment here!" aria-label="With textarea" name="body" style="margin: 0 auto; width: 400px;" required></textarea>
+      </div>
+      <div class="input-group">
+        <button class="btn btn-outline-secondary" type="submit" style="margin: 0 auto;">POST!!!</button>
+      </div>
     </form>
+    <br>
+    <br>
     {% for post in posts %}
     <p><strong>{{ post.author.username }}</strong>
     <p>{{ post.body }}</p></p>
+    <br>
     {% endfor %}
   </div>
 </section>
