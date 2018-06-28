@@ -7,7 +7,8 @@ from app.models import User, Video
 @app.route('/')
 #@app.route('/index')
 def index():
-  return render_template('index.html', videos=range(13))
+  videos = Video.query.all()
+  return render_template('index.html', videos=videos)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -27,6 +28,7 @@ def login():
     next_page = request.args.get('next')
     if not next_page or url_parse(next_page).netloc != '':
       return redirect(url_for('index'))
+    
     return redirect(next_page)
 
   return render_template('login.html')
@@ -65,12 +67,22 @@ def register():
  
   return render_template('register.html')
 
+def allowed_file(filename):
+  return '.' in filename and filename.split('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+
 @app.route('/upload', methods=['GET', 'POST'])
 @login_required
 def upload():
   if request.method == 'POST':
     video_file = request.files.get('video_file')
-    video = Video(author=current_user, name=video_file.filename, data=video_file.read())
+    title = request.form.get('title')
+    description = request.form.get('description')
+
+    if not allowed_file(video_file.filename):
+      flash('Submit a valid video file: *.webm only!')
+      return redirect(url_for('upload'))
+    
+    video = Video(author=current_user, title=title, description=description, binary=video_file.read())
     db.session.add(video)
     db.session.commit()
     return redirect(url_for('index'))
@@ -78,5 +90,6 @@ def upload():
   return render_template('upload.html')
 
 @app.route('/user_profile')
+@login_required
 def user_profile():
   return render_template('user_profile.html')
