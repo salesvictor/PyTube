@@ -3,7 +3,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from secrets import token_urlsafe
 from app import app, db
-from app.models import User, Video
+from app.models import User, Video, Post, Watched
 import os
 
 @app.route('/temporary/<path:filename>')
@@ -105,15 +105,31 @@ def upload():
 def user_profile():
   return render_template('user_profile.html')
 
-@app.route('/watch')
+@app.route('/watch', methods=['GET', 'POST'])
 def watch():
   watch_id = request.args.get('v')
   video = Video.query.filter_by(watch_id=watch_id).first()
+  
+  if Watched.query.filter_by(user_id=current_user.id, video_id=video.id).first() is not None:
+    watched = Watched(user_id=current_user.id, video_id=video.id)
+    db.session.add(watched)
+    video.views = video.views + 1
+    db.session.commit()
+  
+  if request.method == 'POST':
+    body = request.form.get('body')
+    
+    post = Post(author=current_user, video=video, body=body)
+    db.session.add(post)
+    db.session.commit()
+
+    return redirect(request.url)
+
   video_file = url_for('temporary', filename=f'{watch_id}.webm')
   with open(os.path.join('app', app.config['TEMP_FOLDER'], f'{watch_id}.webm'), 'wb') as f:
     f.write(video.binary)
-
-  return render_template('watch.html', video_file=video_file, video=video)
+  
+  return render_template('watch.html', video_file=video_file, video=video, posts=video.posts.all())
 
 @app.route('/user_profile/configure', methods=['GET', 'POST'])
 @login_required
