@@ -97,3 +97,9 @@ def user_profile():
 @app.route('/watch')
 def watch():
   return render_template('watch.html', video_file='', video=None)
+
+# @app.route('/watch', methods=['POST'])
+# def watch(v = None):
+#     if v is None:
+#         v = request.form['v']
+#     watch_id = request.form.get('watch_id')
