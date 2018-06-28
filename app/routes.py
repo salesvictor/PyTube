@@ -1,10 +1,14 @@
-from flask import render_template, request, url_for, redirect, flash
+from flask import render_template, request, url_for, redirect, flash, send_from_directory
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from secrets import token_urlsafe
 from app import app, db
 from app.models import User, Video
 import os
+
+@app.route('/temporary/<path:filename>')
+def temporary(filename):
+  return send_from_directory(app.config['TEMP_FOLDER'], filename)
 
 @app.route('/')
 #@app.route('/index')
@@ -105,8 +109,8 @@ def user_profile():
 def watch():
   watch_id = request.args.get('v')
   video = Video.query.filter_by(watch_id=watch_id).first()
-  video_file = os.path.join(app.config['TEMP_FOLDER'], f'{watch_id}.webm')
-  with open(os.path.join('app', video_file), 'wb') as f:
+  video_file = url_for('temporary', filename=f'{watch_id}.webm')
+  with open(os.path.join('app', app.config['TEMP_FOLDER'], f'{watch_id}.webm'), 'wb') as f:
     f.write(video.binary)
   
   return render_template('watch.html', video_file=video_file, video=video)
