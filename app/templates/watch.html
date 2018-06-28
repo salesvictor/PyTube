@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="jumbotron text-center">
+  <div id="expand" class="container">
+    <video width="640px" height="360px" controls>
+      <source src="{{ video_file }}" type="video/webm">
+    </video>
+    <h2>{{ video.title }}</h2>
+    <p>{{ video.description }}</p>
+  </div>
+</section>
+
+{% endblock %}
