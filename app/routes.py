@@ -1,6 +1,7 @@
 from flask import render_template, request, url_for, redirect, flash
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
+from secrets import token_urlsafe
 from app import app, db
 from app.models import User, Video
 import os
@@ -83,7 +84,12 @@ def upload():
       flash('Submit a valid video file: *.webm only!')
       return redirect(url_for('upload'))
 
-    video = Video(author=current_user, title=title, description=description, binary=video_file.read())
+    valid_url = False
+    while not valid_url:
+      watch_id = token_urlsafe(7)
+      valid_url = Video.query.filter_by(watch_id=watch_id).first() is None
+
+    video = Video(watch_id=watch_id, author=current_user, title=title, description=description, binary=video_file.read())
     db.session.add(video)
     db.session.commit()
     return redirect(url_for('index'))

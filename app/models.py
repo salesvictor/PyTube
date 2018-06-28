@@ -21,6 +21,7 @@ class User(UserMixin, db.Model):
 
 class Video(db.Model):
   id = db.Column(db.Integer, primary_key=True)
+  watch_id = db.Column(db.String(20), index=True, unique=True) 
   binary = db.Column(db.LargeBinary)
   title = db.Column(db.String(140))
   description = db.Column(db.String(600), default="")
