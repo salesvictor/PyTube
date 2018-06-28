@@ -86,10 +86,10 @@ def upload():
 
     valid_url = False
     while not valid_url:
-      url = token_urlsafe(20)
-      valid_url = Video.query.filter_by(watch_id=url).first() is None
+      watch_id = token_urlsafe(7)
+      valid_url = Video.query.filter_by(watch_id=watch_id).first() is None
 
-    video = Video(watch_id=url, author=current_user, title=title, description=description, binary=video_file.read())
+    video = Video(watch_id=watch_id, author=current_user, title=title, description=description, binary=video_file.read())
     db.session.add(video)
     db.session.commit()
     return redirect(url_for('index'))
