@@ -95,7 +95,7 @@ def upload():
       f.write(video.binary)
     create_thumbnail(file)
     thumb_file = os.path.join(app.config['TEMP_FOLDER'], f'{watch_id}.jpg')
-    thumbnail = open(os.path.join('app', video_file, 'wb')
+    thumbnail = open(os.path.join('app', video_file, 'wb'))
     
     video = Video(watch_id=watch_id, author=current_user, title=title, description=description, thumbnail=thumbnail, binary=video_file.read())
     thumbnail.close()    
