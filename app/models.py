@@ -26,6 +26,7 @@ class Video(db.Model):
   binary = db.Column(db.LargeBinary)
   title = db.Column(db.String(140))
   description = db.Column(db.String(600), default="")
+  thumbnail = db.Column(db.LargeBinary)
   timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
   views = db.Column(db.Integer, default=0)
   posts = db.relationship('Post', backref='video', lazy='dynamic')
