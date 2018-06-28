@@ -1,13 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% if user == None %}
-    <h3>You shouldn't be here. You're not logged in. Please
-      <a href="{{ url_for('login') }}">
-        log in.
-      </a>
-    </h3>
-  {% else %}
-    Hello, {{ user }}
-  {% endif %}
+
+    <section class="jumbotron text-center">
+      <div id="expand" class="container">
+        <h1 class="jumbotron-heading">Welcome, {{ current_user.username }}</h1>
+        <a href="{{ url_for('upload') }}" class="btn btn-primary my-2">Upload a video</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary my-2">Log out</a>
+        <br>
+        <hr>
+        <br>
+        <form action="{{ url_for('configure') }}" method="post">
+          <label for="inputPassword" class="sr-only">Current password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Current password" name="actual_password" required style="width: 30%; margin: 1px auto;">
+          <label for="password" class="sr-only">Desired password</label>
+          <input type="password" id="password" class="form-control" placeholder="Desired password" name="password" required style="width: 30%; margin: 1px auto;">
+          <button class="btn btn-lg btn-primary my-2" type="submit">Change password</button>
+        </form>
+      </div>
+    </section>
+
 {% endblock %}

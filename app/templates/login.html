@@ -1,11 +1,18 @@
 {% extends "base_form.html" %}
 
 {% block content %}
+
 <form class="form-signin" method="post" action="{{ url_for('login') }}">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <h4 style="color: red; margin-bottom: 15px;">{{ messages[-1] }}</h4>
+    {% endif %}
+  {% endwith %}
+
   <a href="{{ url_for('index') }}">
     <img src="{{ url_for('static', filename='img/logo.png') }}" height=100 alt="pytube logo">
   </a>
-  
+
   <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
   <label for="inputUsername" class="sr-only">Username</label>
   <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
@@ -16,7 +23,7 @@
       <input type="checkbox" value="remember-me"> Remember me
     </label>
   </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
   <a class="btn btn-secondary btn-lg btn-block my-2" href="{{ url_for('register') }}">Create account</a>
   <p class="mt-5 mb-3 text-muted">&copy; 2018</p>
 </form>
