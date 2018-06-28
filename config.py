@@ -18,3 +18,4 @@ class Config:
   
   ## Videos
   ALLOWED_EXTENSIONS = set(['webm'])
+  TEMP_FOLDER = os.path.join('static', 'tmp')
