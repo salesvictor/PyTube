@@ -4,6 +4,7 @@ from werkzeug.urls import url_parse
 from secrets import token_urlsafe
 from app import app, db
 from app.models import User, Video
+from app.thumbnail import create_thumbnail
 import os
 
 @app.route('/')
@@ -89,7 +90,16 @@ def upload():
       watch_id = token_urlsafe(7)
       valid_url = Video.query.filter_by(watch_id=watch_id).first() is None
 
-    video = Video(watch_id=watch_id, author=current_user, title=title, description=description, binary=video_file.read())
+    video_file = os.path.join(app.config['TEMP_FOLDER'], f'{watch_id}.webm')
+    with open(os.path.join('app', video_file), 'wb') as f:
+      f.write(video.binary)
+    create_thumbnail(file)
+    thumb_file = os.path.join(app.config['TEMP_FOLDER'], f'{watch_id}.jpg')
+    thumbnail = open(os.path.join('app', video_file, 'wb')
+    
+    video = Video(watch_id=watch_id, author=current_user, title=title, description=description, thumbnail=thumbnail, binary=video_file.read())
+    thumbnail.close()    
+
     db.session.add(video)
     db.session.commit()
     return redirect(url_for('index'))
