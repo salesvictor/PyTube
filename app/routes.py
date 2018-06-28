@@ -1,15 +1,13 @@
-from flask import render_template, request
+from flask import render_template, request, url_for, redirect, flash
 from flask_login import current_user, login_user, logout_user
 from werkzeug.urls import url_parse
-from app import app
+from app import app, db
 from app.models import User
-
-user = None # not authenticated forced
 
 @app.route('/')
 #@app.route('/index')
 def index():
-  return render_template('index.html', videos=range(13), user=user)
+  return render_template('index.html', videos=range(13), user=current_user)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -44,7 +42,7 @@ def register():
     return redirect(url_for('index'))
 
   if request.method == 'POST':
-    email = requet.form.get('email')
+    email = request.form.get('email')
     username = request.form.get('username')
     password = request.form.get('password')
 
@@ -52,18 +50,17 @@ def register():
     if User.query.filter_by(email=email).first() is not None:
       flash('Please, use a different email.')
       error = True
-    if User.query.filter_by(username=username).first() is not None:
+    elif User.query.filter_by(username=username).first() is not None:
       flash('Please, use a different username.')
       error = True
     if error:
-      redirect(url_for('register'))
-    
+      return redirect(url_for('register'))
     user = User(email=email, username=username)
     user.set_password(password)
     db.session.add(user)
     db.session.commit()
 
     flash('Welcome to PyTube :)')
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
  
   return render_template('register.html')
