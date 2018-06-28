@@ -166,6 +166,7 @@ def configure():
 @app.route('/search')
 def search():
   search = request.args.get('s')
-  videos = db.video.filter(db.video.column.ilike(search))
+  videos = Video.query.filter(Video.title.ilike(f'%{search}%')).all()
+  print(videos)
   
   return render_template('search.html', search=search, videos=videos)
