@@ -104,20 +104,9 @@ def user_profile():
 @app.route('/watch')
 def watch():
   watch_id = request.args.get('v')
-  print('1')
-  #video = Video.query.filter_by(watch_id=watch_id).first()
-  print('2')
-  #os.makedirs('tmp', exist_ok=True)
-  print('3')
-  #with open(f'tmp/{watch_id}.webm', 'wb') as f:
-    #print('4')
-    #f.write(video.binary)
-    #print('5')
-  video_file = os.path.join(app.config['TEMP_FOLDER'], 'cat.webm')
-  return render_template('watch.html', video_file=video_file, video=None)
-
-# @app.route('/watch', methods=['POST'])
-# def watch(v = None):
-#     if v is None:
-#         v = request.form['v']
-#     watch_id = request.form.get('watch_id')
+  video = Video.query.filter_by(watch_id=watch_id).first()
+  video_file = os.path.join(app.config['TEMP_FOLDER'], f'{watch_id}.webm')
+  with open(os.path.join('app', video_file), 'wb') as f:
+    f.write(video.binary)
+  
+  return render_template('watch.html', video_file=video_file, video=video)
