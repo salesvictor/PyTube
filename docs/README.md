@@ -1,5 +1,4 @@
 # PyTube
-![PyTube Logo](../app/static/logo.png)
 
 ### File Structure
 ```
@@ -24,3 +23,5 @@
 ├── Pipfile.lock
 └── pytube.py
 ```
+### Setup
+*Flask
