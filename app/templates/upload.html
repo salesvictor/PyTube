@@ -10,7 +10,7 @@
   <h3 class="h3 mb-3 font-weight-normal">Select video file to upload</h3>
 
   <div class="input-group" style="margin-bottom: 10px;">
-      <input type="text" class="form-control" placeholder="Video Title" aria-label="Video Title" name="title" style="text-align: center;">
+      <input type="text" class="form-control" placeholder="Video Title" aria-label="Video Title" name="title" style="text-align: center;" required>
       <div class="input-group-append">
         <span class="input-group-text"> Add Title </span>
       </div>
@@ -18,13 +18,13 @@
 
   <div class="input-group">
     <div class="custom-file" style="margin-bottom: 10px;">
-      <input type="file" class="custom-file-input" id="inputGroupFile01" name="video_file">
+      <input type="file" class="custom-file-input" id="inputGroupFile01" name="video_file" required>
       <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
     </div>
   </div>
 
   <div class="input-group" style="margin-bottom: 20px;">
-    <textarea class="form-control" aria-label="With textarea" name="description"></textarea>
+    <textarea class="form-control" aria-label="With textarea" name="description" required></textarea>
     <div class="input-group-append">
       <span class="input-group-text">Description</span>
     </div>

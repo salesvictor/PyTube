@@ -3,17 +3,17 @@
 {% block content %}
 <section class="jumbotron text-center">
   <div id="expand" class="container">
-    {% if user == None %}
+    {% if current_user.is_anonymous %}
     <h1 class="jumbotron-heading">Hello, stranger.</h1>
-    <p class="lead text-muted">Please, log in.</p>
+    <p class="lead text-muted">Please, log in or create an account</p>
+    <p>
+      <a href="{{ url_for('login') }}" class="btn btn-primary my-2">Log in</a>
+      <a href="{{ url_for('register') }}" class="btn btn-secondary my-2">Sign up</a>
+    </p>
     {% else %}
     <h1 class="jumbotron-heading">Welcome, {{ current_user.username }}</h1>
     <p class="lead text-muted">Check the videos below</p>
     {% endif %}
-    <p>
-      <a href="#" class="btn btn-primary my-2">Main call to action</a>
-      <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-    </p>
   </div>
 </section>
 

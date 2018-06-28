@@ -1,10 +1,11 @@
 {% extends "base_form.html" %}
 
 {% block content %}
-<form class="form-signin" method="post" action="/login">
+<form class="form-signin" method="post" action="{{ url_for('login') }}">
   <a href="{{ url_for('index') }}">
     <img src="{{ url_for('static', filename='img/logo.png') }}" height=100 alt="pytube logo">
   </a>
+  
   <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
   <label for="inputUsername" class="sr-only">Username</label>
   <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
