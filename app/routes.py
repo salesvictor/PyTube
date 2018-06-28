@@ -108,5 +108,12 @@ def watch():
   video_file = os.path.join(app.config['TEMP_FOLDER'], f'{watch_id}.webm')
   with open(os.path.join('app', video_file), 'wb') as f:
     f.write(video.binary)
-  
+
   return render_template('watch.html', video_file=video_file, video=video)
+
+@app.route('/search')
+def search():
+  search = request.args.get('s')
+  print(search)
+  videos = Video.query.all()
+  return render_template('search.html', search=search, videos=videos)

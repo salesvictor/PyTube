@@ -4,7 +4,7 @@
 <section class="jumbotron text-center">
   <div id="expand" class="container">
     {% if current_user.is_anonymous %}
-    <h1 class="jumbotron-heading">Hello, stranger.</h1>
+    <h1 class="jumbotron-heading">Howdy, stranger!</h1>
     <p class="lead text-muted">Please, log in or create an account</p>
     <p>
       <a href="{{ url_for('login') }}" class="btn btn-primary my-2">Log in</a>
@@ -12,7 +12,8 @@
     </p>
     {% else %}
     <h1 class="jumbotron-heading">Welcome, {{ current_user.username }}</h1>
-    <p class="lead text-muted">Check the videos below</p>
+    <a href="{{ url_for('upload') }}" class="btn btn-primary my-2">Upload a video</a>
+    <p class="lead text-muted">Or check the videos below</p>
     {% endif %}
   </div>
 </section>
