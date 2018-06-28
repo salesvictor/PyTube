@@ -114,3 +114,21 @@ def watch():
     f.write(video.binary)
   
   return render_template('watch.html', video_file=video_file, video=video)
+
+@app.route('/user_profile/configure', methods=['GET', 'POST'])
+@login_required
+def configure():
+  if request.method == 'POST':
+    actual_password = request.form.get('actual_password')
+    password = request.form.get('password')
+    
+    if not current_user.check_password(actual_password):
+      return redirect(request.url)
+    
+    current_user.set_password(password)
+    db.session.commit()
+
+    logout_user()
+    return redirect(url_for('login'))
+
+  return render_template('configure.html')
