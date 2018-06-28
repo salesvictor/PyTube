@@ -1,7 +1,9 @@
-from app import db, login
+from flask import url_for
+from app import app, db, login
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
+import os
 
 class User(UserMixin, db.Model):
   id = db.Column(db.Integer, primary_key=True)
@@ -31,7 +33,13 @@ class Video(db.Model):
   views = db.Column(db.Integer, default=0)
   posts = db.relationship('Post', backref='video', lazy='dynamic')
   user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+  
+  def get_thumbnail(self):
+    thumbnail_path = os.path.join('app', app.config['TEMP_FOLDER'], f'{self.watch_id}.jpg')
+    with open(thumbnail_path, 'wb') as f:
+      f.write(self.thumbnail)
 
+    return url_for('temporary', filename='{}.jpg'.format(self.watch_id))
   def __repr__(self):
     return '<Video {}>'.format(self.title)   
 
