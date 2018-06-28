@@ -28,7 +28,7 @@ def login():
     next_page = request.args.get('next')
     if not next_page or url_parse(next_page).netloc != '':
       return redirect(url_for('index'))
-    
+
     return redirect(next_page)
 
   return render_template('login.html')
@@ -64,7 +64,7 @@ def register():
 
     flash('Welcome to PyTube :)')
     return redirect(url_for('login'))
- 
+
   return render_template('register.html')
 
 def allowed_file(filename):
@@ -81,7 +81,7 @@ def upload():
     if not allowed_file(video_file.filename):
       flash('Submit a valid video file: *.webm only!')
       return redirect(url_for('upload'))
-    
+
     video = Video(author=current_user, title=title, description=description, binary=video_file.read())
     db.session.add(video)
     db.session.commit()
@@ -93,3 +93,7 @@ def upload():
 @login_required
 def user_profile():
   return render_template('user_profile.html')
+
+@app.route('/watch')
+def watch():
+  return render_template('watch.html', video_file='', video=None)
