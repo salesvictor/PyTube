@@ -90,16 +90,17 @@ def upload():
       watch_id = token_urlsafe(7)
       valid_url = Video.query.filter_by(watch_id=watch_id).first() is None
 
-    video_file = os.path.join(app.config['TEMP_FOLDER'], f'{watch_id}.webm')
-    with open(os.path.join('app', video_file), 'wb') as f:
-      f.write(video.binary)
-    create_thumbnail(file)
-    thumb_file = os.path.join(app.config['TEMP_FOLDER'], f'{watch_id}.jpg')
-    thumbnail = open(os.path.join('app', video_file, 'wb'))
+    video_data = video_file.read()
+    video_path = os.path.join('app', app.config['TEMP_FOLDER'], f'{watch_id}.webm') 
+    with open(video_path, 'wb') as f:
+      f.write(video_data)
     
-    video = Video(watch_id=watch_id, author=current_user, title=title, description=description, thumbnail=thumbnail, binary=video_file.read())
-    thumbnail.close()    
-
+    create_thumbnail(video_path)
+    thumb_path = os.path.join('app', app.config['TEMP_FOLDER'], f'{watch_id}.jpg')
+    thumbnail = open(thumb_path, 'rb')
+    
+    video = Video(watch_id=watch_id, author=current_user, title=title, description=description, thumbnail=thumbnail.read(), binary=video_data)
+    thumbnail.close()
     db.session.add(video)
     db.session.commit()
     return redirect(url_for('index'))

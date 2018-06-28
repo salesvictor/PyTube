@@ -28,7 +28,7 @@ def get_random_filename(ext):
 def create_thumbnail(filename):
     print('Processing:', filename)
 
-    jpg_name = '%s.jpg' % filename
+    jpg_name = '%s.jpg' % filename.split('.')[0]
     if os.path.exists(jpg_name):
         print('Thumbnail assumed exists!')
         return
@@ -85,6 +85,7 @@ def create_thumbnail(filename):
 if __name__ == "__main__":
     p = input("Input the path you want to process: ")
     p = os.path.abspath(p)
+    print(p)
 
     for root, dirs, files in os.walk(p):
         print('Switch to root %s...' % root)
