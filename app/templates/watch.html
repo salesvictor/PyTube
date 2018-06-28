@@ -8,7 +8,16 @@
       <source src="{{ video_file }}" type="video/webm">
     </video>
     <h2>{{ video.title }}</h2>
+    <p>Views: {{ video.views }}</p>
     <p>{{ video.description }}</p>
+    <form action="{{ url_for('watch', v=video.watch_id) }}" method="post">
+      <input type="text" value="Post a comment here!" name="body">
+      <button type="submit">POST!!</button>
+    </form>
+    {% for post in posts %}
+    <p><strong>{{ post.author.username }}</strong>
+    <p>{{ post.body }}</p></p>
+    {% endfor %}
   </div>
 </section>
 
