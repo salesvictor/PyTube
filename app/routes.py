@@ -110,7 +110,7 @@ def watch():
   watch_id = request.args.get('v')
   video = Video.query.filter_by(watch_id=watch_id).first()
   
-  if Watched.query.filter_by(user_id=current_user.id, video_id=video.id).first() is not None:
+  if Watched.query.filter_by(user_id=current_user.id, video_id=video.id).first() is None:
     watched = Watched(user_id=current_user.id, video_id=video.id)
     db.session.add(watched)
     video.views = video.views + 1
