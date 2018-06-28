@@ -4,6 +4,7 @@ from werkzeug.urls import url_parse
 from secrets import token_urlsafe
 from app import app, db
 from app.models import User, Video
+import os
 
 @app.route('/')
 #@app.route('/index')
@@ -102,4 +103,15 @@ def user_profile():
 
 @app.route('/watch')
 def watch():
-  return render_template('watch.html', video_file='', video=None)
+  watch_id = request.args.get('v')
+  print('1')
+  #video = Video.query.filter_by(watch_id=watch_id).first()
+  print('2')
+  #os.makedirs('tmp', exist_ok=True)
+  print('3')
+  #with open(f'tmp/{watch_id}.webm', 'wb') as f:
+    #print('4')
+    #f.write(video.binary)
+    #print('5')
+  video_file = os.path.join(app.config['TEMP_FOLDER'], 'cat.webm')
+  return render_template('watch.html', video_file=video_file, video=None)
