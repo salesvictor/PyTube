@@ -2,7 +2,7 @@ from flask import render_template, request, url_for, redirect, flash
 from flask_login import current_user, login_user, logout_user
 from werkzeug.urls import url_parse
 from app import app, db
-from app.models import User
+from app.models import User, Video
 
 @app.route('/')
 #@app.route('/index')
@@ -64,3 +64,18 @@ def register():
     return redirect(url_for('login'))
  
   return render_template('register.html')
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+  if request.method == 'POST':
+    video_file = request.files['video_file']
+    video = Video(user=user, name=video_file.filename, data=video_file.read())
+    db.session.add(video)
+    db.session.commit()
+    return redirect(url_for('index'))
+
+  return render_template('upload.html')
+
+@app.route('/user_profile')
+def user_profile():
+  return render_template('user_profile.html', user=current_user)

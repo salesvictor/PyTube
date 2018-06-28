@@ -1,0 +1,38 @@
+{% extends "base_form.html" %}
+
+{% block content %}
+<form class="form-signin" method="post" enctype="multipart/form-data" action="{{ url_for('upload') }}">
+  <a href="{{ url_for('index') }}">
+    <img src="{{ url_for('static', filename='img/logo.png') }}" height=100 alt="pytube logo">
+  </a>
+
+  <h1 class="h3 mb-3 font-weight-normal">Logged as {{ user }}</h1>
+  <h3 class="h3 mb-3 font-weight-normal">Select video file to upload</h3>
+
+  <div class="input-group" style="margin-bottom: 10px;">
+      <input type="text" class="form-control" placeholder="Video Title" aria-label="Video Title" name="title" style="text-align: center;">
+      <div class="input-group-append">
+        <span class="input-group-text"> Add Title </span>
+      </div>
+  </div>
+
+  <div class="input-group">
+    <div class="custom-file" style="margin-bottom: 10px;">
+      <input type="file" class="custom-file-input" id="inputGroupFile01" name="video_file">
+      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+    </div>
+  </div>
+
+  <div class="input-group" style="margin-bottom: 20px;">
+    <textarea class="form-control" aria-label="With textarea" name="description"></textarea>
+    <div class="input-group-append">
+      <span class="input-group-text">Description</span>
+    </div>
+  </div>
+
+  <div class="input-group" style="margin: 0 175px;">
+    <button class="btn btn-outline-secondary" type="submit">Upload</button>
+  </div>
+
+</form>
+{% endblock %}
