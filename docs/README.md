@@ -47,7 +47,7 @@ All these flask dependencies needed are set in the Pipfile configuration for pip
 ## Authors
 
 * **Victor Sales** - [salesvictor](https://github.com/salesvictor)
-* **Diego Pereira** - [diegotbl](https://github.com/diegotbl)
+* **Diego Barreto** - [diegotbl](https://github.com/diegotbl)
 * **Juan Freire** - [juanfdg](https://github.com/juanfdg)
 
 ## Acknowledgments
