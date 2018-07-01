@@ -43,6 +43,9 @@ All these flask dependencies needed are set in the Pipfile configuration for pip
 * [PyAv](https://mikeboers.github.io/PyAV/installation.html)
 * [ffmpeg](https://www.ffmpeg.org/)
 
+### Running
+
+To run the code, simply execute ```pipenv run flask run``` on root directory.
 
 ## Authors
 
